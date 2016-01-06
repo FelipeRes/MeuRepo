@@ -14,7 +14,7 @@ public class questao10 {
 			
 		}
 		
-		System.out.println(cont + " valores lidos");
+		System.out.println(cont + " valores pares");
 		scanner.close();
 	}
 }
