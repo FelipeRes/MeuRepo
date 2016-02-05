@@ -1,0 +1,19 @@
+lw 1,0,a
+lw 2,0,b
+#passo 1 - inverter o registrador o a ou reg 1
+nand 1,1,1 
+addi 1,1,1
+#passo 2 - subtrair a de b e salvar no reg 1
+add 1,1,2
+#passo 3 - verificar se o resultado é positivo ou negativo
+lui 2,512
+nand 1,1,2
+nand 1,1,1
+#passo 4 - verificar se o da conversão resultado é igual a zero
+beq 1,0,then
+beq 0,0,endif
+then: addi 5,5,10
+endif: nop
+halt
+a: .fill -1
+b: .fill 5

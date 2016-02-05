@@ -1,0 +1,10 @@
+lw 1,0,a		carrega o valor de a no reg 1
+lw 2,0,b		carrega o valor de b no reg2
+beq 1,2,then 	verifica a == b ou reg1 == reg2  caso sim, pula para label then
+beq 0,0,endif	caso nao, ele pula para o final da execucao
+then: add 3,2,1	aqui é a execucao caso o if seja verdadeiro
+endif: nop		aqui é o fim do if e nao acontece nada
+halt		encerrando programa
+
+a: .fill 7
+b: .fill 5

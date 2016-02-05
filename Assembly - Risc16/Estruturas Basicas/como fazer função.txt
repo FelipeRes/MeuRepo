@@ -1,0 +1,19 @@
+Etapas da chamada de funçao/rotina
+
+1 - Usar movi e guarda em algun registrador o endereço da função
+2 - usar o jalr para guardar no reg7 para pular para o endereço guardado em movi
+3 - A função é executada
+4 - usar o jalr e guardar o endereço atual em reg 0 e pular para o que havia sido guardado no reg7 que era a posição onde ele estava
+
+addi 1,0,1
+sw 1,0,a
+movi 2,xpto	guarda em 2 o endereço da função
+jalr 7,2		guarda no reg7 o endereço atual e pula para o endere guardado em 2 que é o endereço da funçao
+halt
+
+xpto: lw 1,0,a 	codigo da função
+sw 1,0,b		
+jalr 0,7		retorna
+
+a: .fill 0
+b: .fill -3

@@ -1,0 +1,31 @@
+int a  = 10
+while( a > 0){
+	a = a-1;
+}
+
+While é composto de dois blocos. 1 - verificaçã, 2 - execução
+1 - Verificação, é apenas um dos if
+Se der verdadeiro, vai para a execução e no final da execução deve ter o retorno
+se der false, ele pula para o final
+
+1 - while ( verificação)
+2 - execução
+3 - retorno
+4 - fim
+
+while: lw 1,0,a
+lui 2,512
+nand 1,2,1
+nand 1,1,1
+beq 1,0,Bloco
+beq 0,0,endw
+
+Bloco: lw 1,0,a
+addi 1,1,-1
+sw 1,0,a
+
+return: beq 0,0,while
+endw: nop
+
+halt
+a: .fill 10

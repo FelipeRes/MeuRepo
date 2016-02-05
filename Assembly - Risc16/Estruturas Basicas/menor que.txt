@@ -1,0 +1,22 @@
+Esse codigo é o mesmo que o maior que, apenas se invertem os numeros pois:
+a > b = -a < b ;D
+lw 1,0,a
+lw 2,0,b
+#passo 1 - inverter o registrador o a ou reg 1
+nand 1,1,1
+addi 1,1,1
+#passo 2 - subtrair a de b e salvar no reg 1 e verifica e é igual a 0, se sim pula para o final pois os numero sao iguais
+add 1,1,2
+beq 1,0,endif
+#passo 3 - verificar se o resultado é positivo ou negativo
+lui 2,512
+nand 1,1,2
+nand 1,1,1
+#passo 4 - verificar se o da conversão resultado é igual a zero
+beq 1,0,then
+beq 0,0,endif
+then: addi 5,5,10 #funcao so para dizer que acontece algo
+endif: nop
+halt
+a: .fill 4
+b: .fill 5

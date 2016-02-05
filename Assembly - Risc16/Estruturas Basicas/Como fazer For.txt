@@ -1,0 +1,41 @@
+como fazer um for em risc 16
+
+for(int i = 0; i < 10; i++){
+	nop
+}
+
+1 - cria uma variavel de contador
+2 - verifica o valor da variavel
+3 - Se a comparação for verdadeira, continua, se a verificação for falsa, pula para o 7
+4 - executa o bloco de dentro
+5 - incrementa a variavel
+6 - retorna para o 2
+7 - fim 
+
+for: addi 1,0,0 	1 - cria a variavel i e armazena na memoria
+sw 1,0,i
+
+loop: lw 1,0,i	2 - bloco de verificacao menor que
+lw 2,0,a		carrega o valor de a que é o comparativo
+nand 1,1,1
+addi 1,1,1
+add 1,1,2		tira a diferença entre -i e a
+beq 1,0,endfor	3.1 - verifica se a diferença entre i e a é igual a zero; se sim, pula para o final pois os numeros são iguais
+lui 2,512		
+nand 1,1,2
+nand 1,1,1
+beq 1,0,bloco	3.2 - verifica e a diferença entre i e a é um numero positivo ou negativo; 0 = positivo, 1 = negativo. Nesse caso, o 0 vai indicar que o codigo pode prosseguir e o 1 vai indicar que a diferença e negatica e que i ja é maior que a
+beq 0,0,endfor
+
+bloco: addi 5,0,5	4 - bloco dentro do for, coloquei uma coisa aleatoria
+
+lw 1,0,i		5 - incrementa a variavel i
+addi 1,1,1
+sw 1,0,i
+
+beq 0,0,loop	6 - retorna para o inicio
+endfor: nop	7 - fim
+
+halt
+i: .fill 0
+a: .fill 7
