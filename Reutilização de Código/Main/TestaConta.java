@@ -1,5 +1,7 @@
 package Main;
 
+import Exeptions.SaldoInsuficiente;
+import Exeptions.ValorNegativo;
 import Software.Conta;
 import Software.ContaCorrente;
 import Software.ContaPoupanca;
@@ -15,7 +17,7 @@ public class TestaConta {
 		Conta corrente2 = new ContaCorrente();
 		Conta poupanca2 = new ContaPoupanca();
 		
-		conta.deposita(1000);
+		conta.deposita(1000);//coloca mill na conta
 		corrente.deposita(1000);
 		poupanca.deposita(1000);
 		
@@ -23,13 +25,13 @@ public class TestaConta {
 		corrente2.deposita(1000);
 		poupanca2.deposita(1000);
 		
-		/*.atualiza(0.1);
-		corrente.atualiza(0.1);
-		poupanca.atualiza(0.1);
-		
-		conta2.atualiza(0.1);
-		corrente2.atualiza(0.1);
-		poupanca2.atualiza(0.1);*/
+		try {
+			corrente.saca(-10); //tenta sacar 2000
+		} catch (SaldoInsuficiente e) {
+			System.out.println(e.getMessage());  ///aqui o erro é aprensentado 
+		} catch (ValorNegativo e) {
+			System.out.println(e.getMessage());  ///aqui o erro é aprensentado 
+		}
 		
 		System.out.println(conta.getSaldo());
 		System.out.println(corrente.getSaldo());
@@ -39,6 +41,7 @@ public class TestaConta {
 		System.out.println(corrente2.getSaldo());
 		System.out.println(poupanca2.getSaldo());
 		
+		//daqui para baixo é a atividade 7 da apostila
 		System.out.println("ATIVIDADE 7========================================");
 		
 		AtualizadorDeContas atualizadorDeContas = new AtualizadorDeContas(0.1);
@@ -62,6 +65,10 @@ public class TestaConta {
 		}
 		
 		
-		
+		seMatar();
+	}
+	
+	static void seMatar(){
+		seMatar();
 	}
 }

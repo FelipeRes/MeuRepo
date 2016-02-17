@@ -1,5 +1,8 @@
 package Software;
 
+import Exeptions.SaldoInsuficiente;
+import Exeptions.ValorNegativo;
+
 public class ContaCorrente implements ContaTributavel {
 
 	private double saldo;
@@ -17,10 +20,18 @@ public class ContaCorrente implements ContaTributavel {
 	}
 
 	@Override
-	public void saca(double valor) {
-		this.saldo -= valor;
+	public void saca(double valor) throws SaldoInsuficiente, ValorNegativo {
+		if(valor < 0){
+			throw new ValorNegativo("O valor que tem positivo: " + valor, valor);
+		}
+		if(valor > saldo){
+			throw new SaldoInsuficiente("Tente sacar um valor menor");
+		}else{
+			this.saldo -= valor;	
+		}
 		
 	}
+
 
 	@Override
 	public double getSaldo() {

@@ -1,5 +1,8 @@
 package Software;
 
+import Exeptions.SaldoInsuficiente;
+import Exeptions.ValorNegativo;
+
 public class ContaPoupanca implements Conta {
 	private double saldo;
 
@@ -15,9 +18,12 @@ public class ContaPoupanca implements Conta {
 	}
 
 	@Override
-	public void saca(double valor) {
-		this.saldo -= valor;
-		
+	public void saca(double valor) throws SaldoInsuficiente, ValorNegativo {
+		if(valor > saldo){
+			throw new SaldoInsuficiente("Tente sacar um valor menor");
+		}else{
+			this.saldo -= valor;	
+		}	
 	}
 
 	@Override
